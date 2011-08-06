@@ -9,6 +9,7 @@
 </head>
 <body class='<%= body_classes.join(' ') %>'>
 	
+<%= link_to image_tag("logo.png"), root_url, :id => 'logo' %>
 <%= render :partial => 'flash_messages' %>	
 
 <%= yield %>
