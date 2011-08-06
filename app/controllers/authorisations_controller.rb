@@ -48,7 +48,9 @@ class AuthorisationsController < ApplicationController
       if @authorisation.confirmation_code == params[:authorisation][:code].upcase
         @authorisation.confirmed = true
         @authorisation.save
-        format.html { redirect_to root_url, notice: 'You are now setup as a <strong>999 NOW</strong> responder.' }
+        Messenger.send(self.phone_number, "You are now setup as a 999now responder. Text STOP at any time to unsubscribe.", true)
+        
+        format.html { redirect_to root_url, notice: 'You are now setup as a <strong>999now</strong> responder.' }
         format.json { head :ok }
       else
         @authorisation.errors['code'] =  "is not valid."

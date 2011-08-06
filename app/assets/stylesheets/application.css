@@ -118,3 +118,39 @@ td:first-child, th:first-child {
 	color: #a00;
 }
 
+html {
+	background-color: #ddd;
+}
+
+body {
+	width: 600px;
+	margin: 0px auto;
+	background-color: #fff;
+	padding: 50px 50px 0px 50px;
+}
+
+h1 {
+		margin-top: 0px;
+		margin-bottom: 20px;
+}
+
+h1 strong {
+	color: #a00;
+}
+
+p {
+	margin-top: 0px;
+}
+
+footer {
+	border-top: 1px solid #ddd;
+	font-size: 0.8em;
+	padding: 10px;
+	margin-top: 20px;
+	color: #888;
+}
+
+footer a {
+	color: #a00 !important;
+	text-decoration: none;
+}

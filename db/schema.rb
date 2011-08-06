@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110806164113) do
+ActiveRecord::Schema.define(:version => 20110806173735) do
 
   create_table "alarms", :force => true do |t|
     t.text     "location"
@@ -26,6 +26,7 @@ ActiveRecord::Schema.define(:version => 20110806164113) do
     t.datetime "updated_at"
     t.string   "confirmation_code"
     t.boolean  "is_certified"
+    t.string   "postcode"
   end
 
 end

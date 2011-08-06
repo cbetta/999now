@@ -1,4 +1,4 @@
-<h1>Become a <strong>999 NOW</strong> first responder</h1>
+<h1>Become a <strong>999now</strong> first responder</h1>
 
 <%= form_for(@authorisation) do |f| %>
   <% if @authorisation.errors.any? %>
@@ -16,6 +16,12 @@
   <div class="field">
     <%= f.label :phone_number, "Your mobile phone number" %>
     <%= f.text_field :phone_number, :placeholder => "e.g. 07123456789", :type => 'tel' %>
+  </div>
+
+	<div class="field">
+    <%= f.label :postcode, "Your postcode" %>
+		<p>Just so we can target any requests for you.</p>
+    <%= f.text_field :postcode, :placeholder => "e.g. SE1" %>
   </div>
 
 	<div class="field inline">

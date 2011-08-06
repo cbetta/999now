@@ -135,7 +135,7 @@
  
 /* red */
 .red {
-	color: #faddde;
+	color: #faddde !important;
 	border: solid 1px #980c10;
 	background: #d81b21;
 	background: -webkit-gradient(linear, left top, left bottom, from(#ed1c24), to(#aa1317));
@@ -201,7 +201,7 @@
  
 /* green */
 .green {
-	color: #e8f0de;
+	color: #e8f0de !important;
 	border: solid 1px #538312;
 	background: #64991e;
 	background: -webkit-gradient(linear, left top, left bottom, from(#7db72f), to(#4e7d0e));
