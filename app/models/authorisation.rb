@@ -11,4 +11,8 @@ class Authorisation < ActiveRecord::Base
   def convert_number
     self.phone_number = self.phone_number.gsub(/[^0-9]/, "")
   end
+  
+  def code 
+    ""
+  end
 end

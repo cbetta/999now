@@ -1,5 +1,24 @@
-<h1>New authorisation</h1>
+<h1>Signup as a <strong>Help Me Now</strong> volunteer</h1>
 
-<%= render 'form' %>
+<%= form_for(@authorisation) do |f| %>
+  <% if @authorisation.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@authorisation.errors.count, "error") %> prohibited this authorisation from being saved:</h2>
 
-<%= link_to 'Back', authorisations_path %>
+      <ul>
+      <% @authorisation.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :phone_number, "Your phone number" %>
+    <%= f.text_field :phone_number, :placeholder => "e.g. 07123456789" %>
+  </div>
+  <div class="actions">
+    <%= f.submit :value => 'Continue...', :class => 'button gray' %>
+  </div>
+<% end %>
+

@@ -1,6 +1,26 @@
-<h1>Editing authorisation</h1>
+<h1>Step 2: <strong>Confirm</strong> your setup</h1>
 
-<%= render 'form' %>
+<%= form_for(@authorisation) do |f| %>
+	<p class='info'>We have sent you a code to confirm your phone number. Please fill in that code below and you should be all setup.</p>
 
-<%= link_to 'Show', @authorisation %> |
-<%= link_to 'Back', authorisations_path %>
+  <% if @authorisation.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@authorisation.errors.count, "error") %> prohibited this authorisation from being saved:</h2>
+
+      <ul>
+      <% @authorisation.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :code, "Confirmation code" %>
+    <%= f.text_field :code, :placeholder => "e.g. ABC6AD" %>
+  </div>
+  <div class="actions">
+    <%= f.submit :value => 'Confirm', :class => 'button gray' %>
+  </div>
+<% end %>
+
