@@ -13,11 +13,7 @@
 
   <div class="field">
     <%= f.label :phone_number %><br />
-    <%= f.text_field :phone_number %>
-  </div>
-  <div class="field">
-    <%= f.label :confirmed %><br />
-    <%= f.check_box :confirmed %>
+    <%= f.text_field :phone_number, :placeholder => "07123456789" %>
   </div>
   <div class="actions">
     <%= f.submit %>

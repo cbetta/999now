@@ -5,3 +5,9 @@
 require File.expand_path('../config/application', __FILE__)
 
 Helpmenow::Application.load_tasks
+
+module ::Helpmenow  
+  class Application
+    include Rake::DSL
+  end
+end
