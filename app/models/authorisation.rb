@@ -22,7 +22,7 @@ class Authorisation < ActiveRecord::Base
   end
   
   def generate_confirmation_code
-    self.confirmation_code = OpenSSL::HMAC.hexdigest(OpenSSL::Digest::Digest.new('sha256'), ENV['HMO_SECRET'], self.phone_number).last(5).upcase
+    self.confirmation_code = OpenSSL::HMAC.hexdigest(OpenSSL::Digest::Digest.new('sha256'), ENV['HMO_SECRET'], self.phone_number+Time.now.to_s).last(5).upcase
   end
   
   def send_confirmation_request

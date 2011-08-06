@@ -15,6 +15,10 @@ class AuthorisationsController < ApplicationController
   def edit
     @authorisation = Authorisation.find(params[:id])
   end
+  
+  def test
+    redirect_to root_url, :notice => "This is a warning"
+  end
 
   # POST /authorisations
   # POST /authorisations.json
@@ -23,7 +27,7 @@ class AuthorisationsController < ApplicationController
 
     respond_to do |format|
       if @authorisation.save
-        format.html { redirect_to edit_authorisation_path(@authorisation), notice: 'Authorisation was successfully created.' }
+        format.html { redirect_to edit_authorisation_path(@authorisation) }
         format.json { render json: @authorisation, status: :created, location: @authorisation }
       else
         format.html { render action: "new" }
@@ -37,7 +41,7 @@ class AuthorisationsController < ApplicationController
   def update
     @authorisation = Authorisation.find(params[:id])
     respond_to do |format|
-      if @authorisation.confirmation_code == params[:authorisation][:code]
+      if @authorisation.confirmation_code == params[:authorisation][:code].upcase
         @authorisation.confirmed = true
         @authorisation.save
         format.html { redirect_to root_url, notice: 'You are now setup as a <strong>Help Me Now</strong> responder.' }

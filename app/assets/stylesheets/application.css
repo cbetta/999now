@@ -106,3 +106,14 @@ td, th {
 td:first-child, th:first-child {
   empty-cells: hide; /* Hide empty cells when they're the first in the row */
 }
+
+#notice {
+	background-color: rgba(0,100,0,0.2);
+	padding: 10px;
+	margin-bottom: 20px;
+	font-weight: bold;
+}
+
+#notice strong {
+	color: #a00;
+}
