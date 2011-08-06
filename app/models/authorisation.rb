@@ -14,7 +14,7 @@ class Authorisation < ActiveRecord::Base
       
   before_validation :convert_number, :convert_postcode
   before_create :generate_confirmation_code
-  after_create :send_confirmation_request
+  after_create :queue_confirmation_request
   
   def self.queue
     :authorisations
@@ -53,7 +53,11 @@ class Authorisation < ActiveRecord::Base
     self.confirmation_code ||= OpenSSL::HMAC.hexdigest(OpenSSL::Digest::Digest.new('sha256'), ENV['HMO_SECRET'], self.phone_number+Time.now.to_s).last(5).upcase
   end
   
-  def send_confirmation_request
+  def queue_confirmation_request
+    Resque.enqueue(Authorisation, self.id, "send_notification_request")
+  end
+  
+  def send_notification_request
     Messenger.send(self.phone_number, "This is your confirmation code for Help Me Now: #{self.confirmation_code}", true)
   end
 end
