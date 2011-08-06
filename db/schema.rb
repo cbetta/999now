@@ -10,13 +10,14 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110806124101) do
+ActiveRecord::Schema.define(:version => 20110806145619) do
 
   create_table "authorisations", :force => true do |t|
     t.string   "phone_number"
     t.boolean  "confirmed"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "confirmation_code"
   end
 
 end
