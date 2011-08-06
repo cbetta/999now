@@ -1,5 +1,9 @@
 class AuthorisationsController < ApplicationController
 
+  def index 
+    redirect_to root_url
+  end
+
   # GET /authorisations/new
   # GET /authorisations/new.json
   def new
@@ -44,7 +48,7 @@ class AuthorisationsController < ApplicationController
       if @authorisation.confirmation_code == params[:authorisation][:code].upcase
         @authorisation.confirmed = true
         @authorisation.save
-        format.html { redirect_to root_url, notice: 'You are now setup as a <strong>Help Me Now</strong> responder.' }
+        format.html { redirect_to root_url, notice: 'You are now setup as a <strong>999 NOW</strong> responder.' }
         format.json { head :ok }
       else
         @authorisation.errors['code'] =  "is not valid."

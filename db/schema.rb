@@ -10,7 +10,14 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110806145619) do
+ActiveRecord::Schema.define(:version => 20110806164113) do
+
+  create_table "alarms", :force => true do |t|
+    t.text     "location"
+    t.string   "phone_number"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "authorisations", :force => true do |t|
     t.string   "phone_number"
@@ -18,6 +25,7 @@ ActiveRecord::Schema.define(:version => 20110806145619) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "confirmation_code"
+    t.boolean  "is_certified"
   end
 
 end

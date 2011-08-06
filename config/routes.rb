@@ -1,4 +1,6 @@
 Helpmenow::Application.routes.draw do
+  get "frontpage/index"
+
   resources :alarms
 
   resources :authorisations

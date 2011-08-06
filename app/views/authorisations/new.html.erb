@@ -1,4 +1,4 @@
-<h1>Signup as a <strong>Help Me Now</strong> volunteer</h1>
+<h1>Become a <strong>999 NOW</strong> first responder</h1>
 
 <%= form_for(@authorisation) do |f| %>
   <% if @authorisation.errors.any? %>
@@ -17,6 +17,12 @@
     <%= f.label :phone_number, "Your mobile phone number" %>
     <%= f.text_field :phone_number, :placeholder => "e.g. 07123456789", :type => 'tel' %>
   </div>
+
+	<div class="field inline">
+    <%= f.check_box :is_certified, :value => true %>
+    <%= f.label :is_certified, "I confirm that I am a qualified first aider with a current certificate" %>
+  </div>
+
   <div class="actions">
     <%= f.submit :value => 'Continue...', :class => 'button gray' %>
   </div>
