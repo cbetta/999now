@@ -27,6 +27,9 @@ class AuthorisationsController < ApplicationController
   # POST /authorisations
   # POST /authorisations.json
   def create
+    if authorisation = Authorisation.where("phone_number = ? AND confirmed IS NULL", params[:authorisation][:phone_number].gsub(/[^0-9]/, "")).first 
+      authorisation.destroy
+    end
     @authorisation = Authorisation.new(params[:authorisation])
 
     respond_to do |format|
@@ -48,7 +51,7 @@ class AuthorisationsController < ApplicationController
       if @authorisation.confirmation_code == params[:authorisation][:code].upcase
         @authorisation.confirmed = true
         @authorisation.save
-        Messenger.send(self.phone_number, "You are now setup as a 999now responder. Text STOP at any time to unsubscribe.", true)
+        Messenger.send(@authorisation.phone_number, "You are now setup as a 999now responder. Text STOP at any time to unsubscribe.", true)
         
         format.html { redirect_to root_url, notice: 'You are now setup as a <strong>999now</strong> responder.' }
         format.json { head :ok }
