@@ -1,3 +1,5 @@
+require "messenger"
+
 class Authorisation < ActiveRecord::Base
   attr_accessible :phone_number
   
@@ -9,6 +11,7 @@ class Authorisation < ActiveRecord::Base
       
   before_validation :convert_number
   before_create :generate_confirmation_code
+  after_create :send_confirmation_request
   
   def convert_number
     self.phone_number = self.phone_number.gsub(/[^0-9]/, "")
@@ -19,5 +22,10 @@ class Authorisation < ActiveRecord::Base
   end
   
   def generate_confirmation_code
+    self.confirmation_code = OpenSSL::HMAC.hexdigest(OpenSSL::Digest::Digest.new('sha256'), ENV['HMO_SECRET'], self.phone_number).last(5).upcase
+  end
+  
+  def send_confirmation_request
+    Messenger.send(self.phone_number, "This is your confirmation code for Help Me Now: #{self.confirmation_code}", true)
   end
 end
