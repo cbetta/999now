@@ -2,12 +2,7 @@ class AlarmsController < ApplicationController
   # GET /alarms
   # GET /alarms.json
   def index
-    @alarms = Alarm.all
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @alarms }
-    end
+   redirect_to new_alarm_path
   end
 
   # GET /alarms/1
@@ -32,11 +27,6 @@ class AlarmsController < ApplicationController
     end
   end
 
-  # GET /alarms/1/edit
-  def edit
-    @alarm = Alarm.find(params[:id])
-  end
-
   # POST /alarms
   # POST /alarms.json
   def create
@@ -44,40 +34,12 @@ class AlarmsController < ApplicationController
 
     respond_to do |format|
       if @alarm.save
-        format.html { redirect_to @alarm, notice: 'Alarm was successfully created.' }
+        format.html { redirect_to @alarm, notice: 'Alarm was successfully created. Responders have been notified and will call you soon. Also make sure someone actually called 999. This site is not a replacement for professional emergence services.' }
         format.json { render json: @alarm, status: :created, location: @alarm }
       else
         format.html { render action: "new" }
         format.json { render json: @alarm.errors, status: :unprocessable_entity }
       end
-    end
-  end
-
-  # PUT /alarms/1
-  # PUT /alarms/1.json
-  def update
-    @alarm = Alarm.find(params[:id])
-
-    respond_to do |format|
-      if @alarm.update_attributes(params[:alarm])
-        format.html { redirect_to @alarm, notice: 'Alarm was successfully updated.' }
-        format.json { head :ok }
-      else
-        format.html { render action: "edit" }
-        format.json { render json: @alarm.errors, status: :unprocessable_entity }
-      end
-    end
-  end
-
-  # DELETE /alarms/1
-  # DELETE /alarms/1.json
-  def destroy
-    @alarm = Alarm.find(params[:id])
-    @alarm.destroy
-
-    respond_to do |format|
-      format.html { redirect_to alarms_url }
-      format.json { head :ok }
     end
   end
 end

@@ -1,5 +1,41 @@
-<h1>New alarm</h1>
 
-<%= render 'form' %>
+<h1>Create a new alarm</h1>
 
-<%= link_to 'Back', alarms_path %>
+<%= form_for(@alarm) do |f| %>
+  <% if @alarm.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@alarm.errors.count, "error") %> prohibited this alarm from being created</h2>
+
+      <ul>
+      <% @alarm.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+	<div class="postcode">
+    <%= f.label :postcode, "Your postcode" %>
+    <%= f.text_field :postcode, :placeholder => 'loading...' %>
+  </div>
+  <div class="field">
+    <%= f.label :location, "Any notes? (not required)" %>
+    <%= f.text_field :location %>
+  </div>
+  <div class="field">
+    <%= f.label :phone_number, "Your phone number someone can reach you on" %>
+    <%= f.text_field :phone_number, :placeholder => 'e.g. 07123456789', :type => 'tel' %>
+  </div>
+  <div class="actions">
+    <%= link_to 'Back', alarms_path, :class => 'button blue'  %><%= f.submit  "Send!", :class => 'button green' %>
+  </div>
+<% end %>
+
+
+<script>
+$(document).ready(function(){
+	if (Modernizr.geolocation) {
+		navigator.geolocation.getCurrentPosition(prefill_location, failed_location, {maximumAge:10}) 
+	}
+});
+</script>

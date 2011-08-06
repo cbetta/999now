@@ -16,6 +16,20 @@ class Authorisation < ActiveRecord::Base
   before_create :generate_confirmation_code
   after_create :send_confirmation_request
   
+  def self.queue
+    :authorisations
+  end
+  
+  def self.perform(id, method, *args)
+    authorisation = Authorisation.find(id)
+    authorisation.send(method, *args)
+  end
+  
+  def notify(alarm_id)
+    alarm = Alarm.find(alarm_id)
+    Messenger.send(self.phone_number, "Alarm @ #{alarm.postcode} #{"("+alarm.location+")" unless alarm.location.blank?} - #{alarm.phone_number}")
+  end
+  
   def convert_number
     self.phone_number = self.phone_number.gsub(/[^0-9]/, "")
   end

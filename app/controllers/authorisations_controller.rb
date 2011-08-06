@@ -1,7 +1,7 @@
 class AuthorisationsController < ApplicationController
 
   def index 
-    redirect_to root_url
+    redirect_to new_authorisation_path
   end
 
   # GET /authorisations/new
@@ -18,10 +18,6 @@ class AuthorisationsController < ApplicationController
   # GET /authorisations/1/edit
   def edit
     @authorisation = Authorisation.find(params[:id])
-  end
-  
-  def test
-    redirect_to root_url, :notice => "This is a warning"
   end
 
   # POST /authorisations

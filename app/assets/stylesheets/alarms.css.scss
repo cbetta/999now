@@ -1,3 +1,59 @@
-// Place all the styles related to the Alarms controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+body.alarms {
+
+	
+	form {
+	
+		#error_explanation {
+			font-size: 14px;
+		}
+		
+		.info {
+			
+		}
+		
+		.field.inline {
+			label {
+				display: inline
+			}
+			
+			.field_with_errors {
+				display: inline;
+			}
+		}
+		
+		label {
+			text-align: left;
+			margin-bottom: 5px;
+			display: block;
+			font-weight: bold;
+		}
+		
+		input[type=tel], input[type=text] {
+			border: 1px solid #aaa;
+			font-size: 30px;
+			padding: 10px;
+			margin: 0px;
+			width: 580px;
+			margin-bottom: 10px;
+		}
+		
+		.field_with_errors {
+			input {
+				border: 1px solid #a00;
+			}
+			
+			label {
+				color: #a00;
+			}
+		}
+		
+		.actions {
+			text-align: right;
+			margin-top: 30px;
+			
+			a {
+				float: left
+			}
+		}
+	}
+}

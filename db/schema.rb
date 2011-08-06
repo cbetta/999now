@@ -10,13 +10,14 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110806173735) do
+ActiveRecord::Schema.define(:version => 20110806210347) do
 
   create_table "alarms", :force => true do |t|
     t.text     "location"
     t.string   "phone_number"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "postcode"
   end
 
   create_table "authorisations", :force => true do |t|
