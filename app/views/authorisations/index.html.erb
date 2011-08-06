@@ -1,0 +1,25 @@
+<h1>Listing authorisations</h1>
+
+<table>
+  <tr>
+    <th>Phone number</th>
+    <th>Confirmed</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @authorisations.each do |authorisation| %>
+  <tr>
+    <td><%= authorisation.phone_number %></td>
+    <td><%= authorisation.confirmed %></td>
+    <td><%= link_to 'Show', authorisation %></td>
+    <td><%= link_to 'Edit', edit_authorisation_path(authorisation) %></td>
+    <td><%= link_to 'Destroy', authorisation, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Authorisation', new_authorisation_path %>

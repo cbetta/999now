@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Phone number:</b>
+  <%= @authorisation.phone_number %>
+</p>
+
+<p>
+  <b>Confirmed:</b>
+  <%= @authorisation.confirmed %>
+</p>
+
+
+<%= link_to 'Edit', edit_authorisation_path(@authorisation) %> |
+<%= link_to 'Back', authorisations_path %>
