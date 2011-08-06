@@ -36,12 +36,14 @@ class AuthorisationsController < ApplicationController
   # PUT /authorisations/1.json
   def update
     @authorisation = Authorisation.find(params[:id])
-
     respond_to do |format|
-      if @authorisation.update_attributes(params[:authorisation])
-        format.html { redirect_to @authorisation, notice: 'Authorisation was successfully updated.' }
+      if @authorisation.confirmation_code == params[:authorisation][:code]
+        @authorisation.confirmed = true
+        @authorisation.save
+        format.html { redirect_to root_url, notice: 'You are now setup as a <strong>Help Me Now</strong> responder.' }
         format.json { head :ok }
       else
+        @authorisation.errors['code'] =  "is not valid."
         format.html { render action: "edit" }
         format.json { render json: @authorisation.errors, status: :unprocessable_entity }
       end
