@@ -1,4 +1,6 @@
 Helpmenow::Application.routes.draw do
+  resources :alarms
+
   resources :authorisations
 
   # The priority is based upon order of creation:

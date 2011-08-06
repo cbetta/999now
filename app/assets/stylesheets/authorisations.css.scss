@@ -29,12 +29,12 @@ body.authorisations {
 		
 		label {
 			text-align: left;
-			margin-bottom: 0px;
+			margin-bottom: 5px;
 			display: block;
 			font-weight: bold;
 		}
 		
-		input[type=text] {
+		input[type=tel] {
 			border: 1px solid #aaa;
 			font-size: 30px;
 			padding: 10px;

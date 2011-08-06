@@ -14,8 +14,8 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :phone_number, "Your phone number" %>
-    <%= f.text_field :phone_number, :placeholder => "e.g. 07123456789" %>
+    <%= f.label :phone_number, "Your mobile phone number" %>
+    <%= f.text_field :phone_number, :placeholder => "e.g. 07123456789", :type => 'tel' %>
   </div>
   <div class="actions">
     <%= f.submit :value => 'Continue...', :class => 'button gray' %>
