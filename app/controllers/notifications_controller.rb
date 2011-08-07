@@ -12,7 +12,7 @@ class NotificationsController < ApplicationController
       raise "No phone number found" if phone_number.blank?
       
       command  = message.strip.upcase
-      phone_number.gsub(/^44/, '0')
+      phone_number = phone_number.gsub(/^44/, '0')
       if command == "STOP"
         authorisation = Authorisation.find_by_phone_number(phone_number)
         authorisation.destroy
