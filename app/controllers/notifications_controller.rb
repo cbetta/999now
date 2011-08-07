@@ -4,7 +4,7 @@ class NotificationsController < ApplicationController
   skip_before_filter :verify_authenticity_token
   
   def index
-    begin
+    # begin
       phone_number = params[:InboundMessage][:From]
       message = params[:InboundMessage][:MessageText]
       
@@ -20,9 +20,9 @@ class NotificationsController < ApplicationController
       end
     
       render :xml => {:response => {:state => 'success'}}
-    rescue
-      render :xml => {:response => {:state => 'error'}}
-    end
+    # rescue Except
+      # render :xml => {:response => {:state => 'error'}}
+    # end
   end
 
 end
