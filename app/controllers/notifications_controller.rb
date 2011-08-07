@@ -1,4 +1,3 @@
-require 'rexml/document'
 require "messenger"
 
 class NotificationsController < ApplicationController
@@ -6,22 +5,14 @@ class NotificationsController < ApplicationController
   
   def index
     begin
-      data = request.body.read
-      doc = REXML::Document.new(data)
+      phone_number = params[:InboundMessage][:From]
+      message = params[:InboundMessage][:MessageText]
       
-      phone_number = nil 
-      message = nil
-      doc.elements.each("InboundMessage/From") do |element|
-        phone_number = element.text
-      end
-      doc.elements.each("InboundMessage/MessageText") do |element|
-        message = element.text
-      end
-
-      raise "No message found" if message.nil?
-      raise "No phone number found" if phone_number.nil?
+      raise "No message found" if message.blank?
+      raise "No phone number found" if phone_number.blank?
       
       command  = message.strip.upcase
+      phone_number.gsub(/^44/, '0')
       if command == "STOP"
         authorisation = Authorisation.find_by_phone_number(phone_number)
         authorisation.destroy
