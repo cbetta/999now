@@ -493,3 +493,10 @@ body.frontpage .red.button {
   font-weight: bold;
   font-size: 20px;
 }
+/* line 7, /Users/cbetta/Development/helpmenow/app/assets/stylesheets/frontpage.css.scss */
+body.frontpage #disclaimer {
+  background-color: #FCF0AD;
+  padding: 10px 10px;
+  margin-bottom: 50px;
+  color: #888;
+}
